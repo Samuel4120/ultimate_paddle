@@ -1,5 +1,5 @@
 # Ultimate Paddle Game
-PvP game. The objective of the game is to move the paddle to prevent the oppoennt from scoring goals in our field side.
+PvP game. The objective of the game is to move the paddle to prevent the opponent from scoring goals on our side of the field.
 
 ## Requirements
 1. Install Python: https://www.python.org/
