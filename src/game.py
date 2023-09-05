@@ -37,7 +37,7 @@ Score1 = 0
 Score2 = 0
 
 #Paddle
-lenght_pad = LENGTH_PADDLE
+length_pad = LENGTH_PADDLE
 P1_posY = PADDLE_Y
 P2_posY = PADDLE_Y
 P1_changeY = 0
@@ -79,7 +79,7 @@ def displayStartScreen():
     """
 
 def isHit(Player_posY, Ball_posY):
-    return Ball_posY >= Player_posY and Ball_posY <= Player_posY + lenght_pad
+    return Ball_posY >= Player_posY and Ball_posY <= Player_posY + length_pad
 
 def drawScore(score, x, y):
     score_txt = fontScore.render(str(score), True, WHITE)
@@ -147,16 +147,16 @@ while True:
     if P1_posY < UPPER_LIMIT:
         P1_changeY = 0
         P1_posY = UPPER_LIMIT
-    elif P1_posY > LOWER_LIMIT - lenght_pad:
+    elif P1_posY > LOWER_LIMIT - length_pad:
         P1_changeY = 0
-        P1_posY = LOWER_LIMIT - lenght_pad
+        P1_posY = LOWER_LIMIT - length_pad
 
     if P2_posY < UPPER_LIMIT:
         P2_changeY = 0
         P2_posY = UPPER_LIMIT
-    elif P2_posY > LOWER_LIMIT - lenght_pad:
+    elif P2_posY > LOWER_LIMIT - length_pad:
         P2_changeY = 0
-        P2_posY = LOWER_LIMIT - lenght_pad
+        P2_posY = LOWER_LIMIT - length_pad
 
     P1_posY += P1_changeY
     P2_posY += P2_changeY
@@ -164,11 +164,11 @@ while True:
     #Hit
     if(Ball_posX in range(905, 921) and isHit(P2_posY, Ball_posY)):
         Ball_changeX = max(-abs(Ball_changeX) - 1, -MAX_SPEED)
-        lenght_pad -= 1
+        length_pad -= 1
         Ball_changeY = random.randint(-10, 10)
     elif(Ball_posX in range(65, 81) and isHit(P1_posY, Ball_posY)):
         Ball_changeX =  min(abs(Ball_changeX) + 1, MAX_SPEED)
-        lenght_pad -= 1
+        length_pad -= 1
         Ball_changeY = random.randint(-8, 8)
     
     #Ball movement
@@ -186,16 +186,16 @@ while True:
         Ball_posX = CENTER_FIELD_X
         Ball_posY = CENTER_FIELD_Y
         Score1 += 1
-        lenght_pad = LENGTH_PADDLE
+        length_pad = LENGTH_PADDLE
     elif(Ball_changeX <= 0 and Ball_posX < 0):
         Ball_changeX = 5
         Ball_posX = CENTER_FIELD_X
         Ball_posY = CENTER_FIELD_Y
         Score2 += 1
-        lenght_pad = LENGTH_PADDLE
+        length_pad = LENGTH_PADDLE
     
-    pygame.draw.rect(screen, WHITE, (50, P1_posY, WIDTH_PADDLE, lenght_pad))
-    pygame.draw.rect(screen, WHITE, (920, P2_posY, WIDTH_PADDLE, lenght_pad))
+    pygame.draw.rect(screen, WHITE, (50, P1_posY, WIDTH_PADDLE, length_pad))
+    pygame.draw.rect(screen, WHITE, (920, P2_posY, WIDTH_PADDLE, length_pad))
     pygame.draw.circle(screen, WHITE, (Ball_posX, Ball_posY), 15)
     
     drawScore(Score1, SCORE1_X, SCORE_Y)
